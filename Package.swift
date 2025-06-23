@@ -13,7 +13,7 @@ let package = Package(
     .target(
       name: "PLYViewer",
       resources: [
-        .process("Metal") // 이 부분이 핵심!!
+        .process("Metal")
       ]
     ),
   ]
