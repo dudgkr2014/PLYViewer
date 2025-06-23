@@ -1,22 +1,20 @@
 // swift-tools-version: 6.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
-    name: "PLYViewer",
-    platforms: [.iOS(.v16)],
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "PLYViewer",
-            targets: ["PLYViewer"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "PLYViewer"),
-
-    ]
+  name: "PLYViewer",
+  platforms: [.iOS(.v16)],
+  products: [
+    .library(
+      name: "PLYViewer",
+      targets: ["PLYViewer"]),
+  ],
+  targets: [
+    .target(
+      name: "PLYViewer",
+      resources: [
+        .process("Metal") // 이 부분이 핵심!!
+      ]
+    ),
+  ]
 )
