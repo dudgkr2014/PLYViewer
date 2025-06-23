@@ -12,9 +12,7 @@ let package = Package(
   targets: [
     .target(
       name: "PLYViewer",
-      resources: [
-        .process("Metal")
-      ]
+      resources: []
     ),
   ]
 )
