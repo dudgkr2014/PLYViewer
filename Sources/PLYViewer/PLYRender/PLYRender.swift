@@ -45,7 +45,7 @@ public class PLYRender: NSObject {
   
   // MARK: - Intializer
   
-  public init(mtkView: MTKView) {
+  public init(mtkView: MTKView, url: URL) {
     self.mtkView = mtkView
     self.commandQueue = mtkView.device?.makeCommandQueue()
     super.init()
@@ -54,10 +54,10 @@ public class PLYRender: NSObject {
     
     mtkView.delegate = self
     
-    makePipelineState()
+    makePipelineState(url: url)
   }
   
-  private func makePipelineState() {
+  private func makePipelineState(url: URL) {
     guard let device = mtkView.device else { return }
     
     let library = device.makeDefaultLibrary()
@@ -84,9 +84,6 @@ public class PLYRender: NSObject {
     do {
       pipelineState = try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
       Task {
-        
-        guard let path = Bundle.main.path(forResource: "ant", ofType: "ply") else { return }
-        let url = URL(fileURLWithPath: path)
         guard let (vertexData, indexData) = parsePLYVerticesAndFaces(from: url) else { return }
         
         plyVertices = vertexData
