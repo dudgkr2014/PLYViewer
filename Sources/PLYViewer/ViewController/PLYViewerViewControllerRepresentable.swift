@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct PLYViewerViewControllerRepresentable: UIViewControllerRepresentable {
+public struct PLYViewerViewControllerRepresentable: UIViewControllerRepresentable {
+  let url: URL
   
-  func makeUIViewController(context: Context) -> some UIViewController {
-    let viewController = PLYViewerViewController.make()
+  public init(url: URL) {
+    self.url = url
+  }
+  
+  public func makeUIViewController(context: Context) -> some UIViewController {
+    let viewController = PLYViewerViewController.make(url: url)
     return viewController
   }
   
-  func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+  public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }

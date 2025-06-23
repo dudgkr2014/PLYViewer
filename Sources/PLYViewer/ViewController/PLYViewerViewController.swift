@@ -20,9 +20,9 @@ class PLYViewerViewController: UIViewController {
   
   // MARK: - Initializer
   
-  private init() {
+  private init(url: URL) {
     viewerView = PLYViewerView()
-    renderer = PLYRender(mtkView: viewerView.mtkView)
+    renderer = PLYRender(mtkView: viewerView.mtkView, url: url)
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -47,8 +47,8 @@ class PLYViewerViewController: UIViewController {
   
   // MARK: - Factory
   
-  public static func make() -> PLYViewerViewController {
-    let viewController = PLYViewerViewController()
+  public static func make(url: URL) -> PLYViewerViewController {
+    let viewController = PLYViewerViewController(url: url)
     return viewController
   }
 }
