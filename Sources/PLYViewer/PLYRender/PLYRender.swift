@@ -60,7 +60,7 @@ public class PLYRender: NSObject {
   private func makePipelineState(url: URL) {
     guard let device = mtkView.device else { return }
     
-    let metallibURL = Bundle.main.url(forResource: "default", withExtension: "metallib")!
+    let metallibURL = Bundle.module.url(forResource: "default", withExtension: "metallib")!
     let library = try? device.makeLibrary(URL: metallibURL)
     
     let vertexDescriptor = MTLVertexDescriptor()
